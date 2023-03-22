@@ -1,23 +1,21 @@
-from selenium.webdriver.common.keys import Keys
-from selenium.webdriver.support.ui import WebDriverWait
-from selenium.webdriver.common.action_chains import ActionChains
-from selenium.webdriver.support import expected_conditions as EC
-from selenium.common.exceptions import NoSuchWindowException
-from selenium.webdriver.common.by import By
-from msedge.selenium_tools import EdgeOptions
-from selenium import webdriver
-from math import inf
-import json, time
-from playsound import playsound as Sound
+try:
+    from selenium.webdriver.common.keys import Keys
+    from selenium.webdriver.support.ui import WebDriverWait
+    from selenium.webdriver.common.action_chains import ActionChains
+    from selenium.webdriver.support import expected_conditions as EC
+    from selenium.common.exceptions import NoSuchWindowException
+    from selenium.webdriver.common.by import By
+    from msedge.selenium_tools import EdgeOptions
+    from selenium import webdriver
+    from math import inf
+    import json, time
+    from playsound import playsound as Sound
+except ImportError:
+    print('Uh Oh Did You install All Required Modules? if not please run "pip install Requirements.txt -r" in a terminal')
 
 '''
-Thanks For Downloading This Program :)
-
 if you hear a 'ding' that means you need to solve a captcha
 '''
-
-
-
 
 options=EdgeOptions()
 options.use_chromium = True
