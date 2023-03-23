@@ -1,2 +1,2 @@
 # Auto-Fish
-Virtual Fisher Bot Macro
+Virtual Fisher Discord Bot Macro
