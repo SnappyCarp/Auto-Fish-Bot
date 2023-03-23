@@ -44,7 +44,7 @@ class Fisher():
                     self.Captcha = True
                 else:
                     self.fish()
-        else: pass
+        else: self.fish()
 
         
 
