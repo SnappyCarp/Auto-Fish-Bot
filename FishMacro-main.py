@@ -75,13 +75,13 @@ try:
     driver = webdriver.Chrome("Path To Microsoft Edge Driver.exe", options=options)
     driver.get(f'https://discord.com/login?redirect_to=%2Fchannels%2F{ServerId}%2F{ChannelId}')
     LogBtn='//*[@id="app-mount"]/div[2]/div/div[1]/div/div/div/div/form/div[2]/div/div[1]/div[2]/button[2]'
-    WebDriverWait(driver, inf).until(EC.presence_of_element_located((By.XPATH,LogBtn)))
+    WebDriverWait(driver, inf).until(EC.presence_of_element_located(By.XPATH,LogBtn))
     #Fill The Password And Username Forms
     driver.find_element_by_name('email').send_keys(data['Username'])
     driver.find_element_by_name('password').send_keys(data['Password'])
     #Click The Login Button
     driver.find_element_by_xpath(LogBtn).click()
-    WebDriverWait(driver, inf).until(EC.presence_of_element_located((By.CSS_SELECTOR,'.textArea-2CLwUE')))
+    WebDriverWait(driver, inf).until(EC.presence_of_element_located(By.CSS_SELECTOR,'.textArea-2CLwUE'))
     Fisher().fish()
 except NoSuchWindowException: exit(1)
 except Exception as e: print(e)
