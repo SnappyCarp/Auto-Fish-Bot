@@ -25,32 +25,43 @@ options.add_argument("disable-gpu")
 ServerId = 'Enter Server Id'
 ChannelId = 'Enter Channel Id'
 
-
-def verf(mId):
-    addStr = f'chat-messages-{ChannelId}-{mId}'
-    items = driver.find_elements_by_tag_name("li")
-    for item in items:
-        inHtml = str(item.get_attribute("innerHTML"))
-        AntiB = '''role="button"><img alt="Anti-bot
-/verify <result>"'''
-        if addStr and AntiB in inHtml:
-            Sound('ding.mp3')
+class Fisher():
+    def __init__(self):
+        super().__init__()
+        self.Captcha = False
     
+    def verf(self, mId: str):
+        addStr = f'chat-messages-{ChannelId}-{mId}'
+        items = driver.find_elements_by_tag_name("li")
+        for item in items:
+            inHtml = str(item.get_attribute("innerHTML"))
+            AntiB = '''role="button"><img alt="Anti-bot
+    /verify <result>"'''
+            if addStr and AntiB in inHtml:
+                Sound('ding.mp3')
+                self.Captcha = True
+            else:
+                self.fish()
 
-def fish():
-    ActionChains(driver).move_to_element(driver.find_element_by_css_selector('.textArea-2CLwUE')).click().perform()
-    time.sleep(0.5)
-    ActionChains(driver).send_keys('/fish').perform()
-    time.sleep(0.5)
-    ActionChains(driver).send_keys(Keys.ENTER).perform()
-    time.sleep(0.5)
-    ActionChains(driver).send_keys(Keys.ENTER).perform()
-    time.sleep(0.5)
-    ActionChains(driver).send_keys(Keys.ENTER).perform()
-    time.sleep(1.2)
-    LatestXPATH=str("""//ol[@data-list-id="chat-messages"]/li[last()]//div[contains(@class,'messageContent')]""")
-    LatestMsg=str(driver.find_element(By.XPATH,LatestXPATH).get_attribute('id').replace('message-content-',''))
-    verf(LatestMsg)
+        
+
+    def fish(self):
+        if self.Captcha==True:
+            print('You Need To Solve A Captcha')
+        elif self.Captcha==False:
+            ActionChains(driver).move_to_element(driver.find_element_by_css_selector('.textArea-2CLwUE')).click().perform()
+            time.sleep(0.5)
+            ActionChains(driver).send_keys('/fish').perform()
+            time.sleep(0.5)
+            ActionChains(driver).send_keys(Keys.ENTER).perform()
+            time.sleep(0.5)
+            ActionChains(driver).send_keys(Keys.ENTER).perform()
+            time.sleep(0.5)
+            ActionChains(driver).send_keys(Keys.ENTER).perform()
+            time.sleep(1.2)
+            LatestXPATH=str("""//ol[@data-list-id="chat-messages"]/li[last()]//div[contains(@class,'messageContent')]""")
+            LatestMsg=str(driver.find_element_by_xpath(LatestXPATH).get_attribute('id').replace('message-content-',''))
+            self.verf(LatestMsg)
 
 
 try:
