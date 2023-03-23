@@ -30,24 +30,28 @@ class Fisher():
         super().__init__()
         self.Captcha = False
     
+    
     def verf(self, mId: str):
-        addStr = f'chat-messages-{ChannelId}-{mId}'
-        items = driver.find_elements_by_tag_name("li")
-        for item in items:
-            inHtml = str(item.get_attribute("innerHTML"))
-            AntiB = '''role="button"><img alt="Anti-bot
-    /verify <result>"'''
-            if addStr and AntiB in inHtml:
-                Sound('ding.mp3')
-                self.Captcha = True
-            else:
-                self.fish()
+        if not mId=='Captcha':
+            addStr = f'chat-messages-{ChannelId}-{mId}'
+            items = driver.find_elements_by_tag_name("li")
+            for item in items:
+                inHtml = str(item.get_attribute("innerHTML"))
+                AntiB = '''role="button"><img alt="Anti-bot
+        /verify <result>"'''
+                if addStr and AntiB in inHtml:
+                    Sound('ding.mp3')
+                    self.Captcha = True
+                else:
+                    self.fish()
+        else: pass
 
         
 
     def fish(self):
         if self.Captcha==True:
             print('You Need To Solve A Captcha')
+            self.verf('Captcha')
         elif self.Captcha==False:
             ActionChains(driver).move_to_element(driver.find_element_by_css_selector('.textArea-2CLwUE')).click().perform()
             time.sleep(0.5)
@@ -78,6 +82,6 @@ try:
     #Click The Login Button
     driver.find_element_by_xpath(LogBtn).click()
     WebDriverWait(driver, inf).until(EC.presence_of_element_located((By.CSS_SELECTOR,'.textArea-2CLwUE')))
-    fish()
+    Fisher().fish()
 except NoSuchWindowException: exit(1)
 except Exception as e: print(e)
