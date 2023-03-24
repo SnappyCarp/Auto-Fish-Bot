@@ -20,7 +20,6 @@ if you hear a 'ding' that means you need to solve a captcha
 options=EdgeOptions()
 options.use_chromium = True
 options.add_argument('log-level=3')
-#options.add_argument("headless")
 options.add_argument("disable-gpu")
 ServerId = 'Enter Server Id'
 ChannelId = 'Enter Channel Id'
