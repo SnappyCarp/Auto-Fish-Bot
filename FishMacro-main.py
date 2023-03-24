@@ -13,11 +13,10 @@ try:
 except ImportError:
     print('Uh Oh Did You install All Required Modules? if not please run "pip install Requirements.txt -r" in a terminal')
 
-print('''
-Thanks For Downloading This Program :)
+print('''Thanks For Downloading This Program :)
 
 if you hear a 'ding' that means you need to solve a captcha
-''')
+once you have solved the captcha you must restart the program''')
 
 options=EdgeOptions()
 options.use_chromium = True
