@@ -28,10 +28,9 @@ ChannelId = 'Enter Channel Id'
 class Fisher():
     def __init__(self):
         super().__init__()
-        self.Captcha = False
     
-    
-     def verf(self, mId: str):
+
+    def isCaptcha(self, mId: str):
             addStr = f'chat-messages-{ChannelId}-{mId}'
             items = driver.find_elements_by_tag_name("li")
             for item in items:
@@ -40,18 +39,13 @@ class Fisher():
         /verify <result>"'''
                 if addStr and AntiB in Html:
                     Sound('ding.mp3')
-                    self.Captcha == True
-                    self.fish()
+                    raise SystemExit
                 else:
                     self.fish()
 
         
 
     def fish(self):
-        if self.Captcha==True:
-            print('You Need To Solve A Captcha')
-            self.verf()
-        else:
             ActionChains(driver).move_to_element(driver.find_element_by_css_selector('.textArea-2CLwUE')).click().perform()
             time.sleep(0.5)
             ActionChains(driver).send_keys('/fish').perform()
@@ -64,7 +58,7 @@ class Fisher():
             time.sleep(1.2)
             LatestXPATH="""//ol[@data-list-id="chat-messages"]/li[last()]//div[contains(@class,'messageContent')]"""
             LatestMsg=driver.find_element_by_xpath(LatestXPATH).get_attribute('id').replace('message-content-','')
-            self.verf(LatestMsg)
+            self.isCaptcha(LatestMsg)
 
 
 try:
