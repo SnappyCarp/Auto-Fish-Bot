@@ -21,6 +21,8 @@ once you have solved the captcha you must restart the program''')
 options=EdgeOptions()
 options.use_chromium = True
 options.add_argument('log-level=3')
+options.add_argument("--disable-extensions")
+options.add_argument('--headless') # if you want to watch the program comment this entire line
 options.add_argument("disable-gpu")
 ServerId = 'Enter Server Id'
 ChannelId = 'Enter Channel Id'
