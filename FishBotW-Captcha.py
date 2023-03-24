@@ -9,13 +9,9 @@ try:
     from selenium import webdriver
     from math import inf
     import json, time
-    from playsound import playsound as Sound
 except ImportError:
     print('Uh Oh Did You install All Required Modules? if not please run "pip install Requirements.txt -r" in a terminal')
 
-'''
-if you hear a 'ding' that means you need to solve a captcha
-'''
 
 options=EdgeOptions()
 options.use_chromium = True
@@ -33,7 +29,7 @@ def verf(mId):
         AntiB = '''role="button"><img alt="Anti-bot
 /verify <result>"'''
         if addStr and AntiB in inHtml:
-            Sound('ding.mp3')
+            pass
     
 
 def fish():
