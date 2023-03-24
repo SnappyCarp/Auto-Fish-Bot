@@ -37,7 +37,7 @@ class Fisher():
             items = driver.find_elements_by_tag_name("li")
             for item in items:
                 Html = str(item.get_attribute("innerHTML"))
-                AntiB = '''role="button"><img alt="Anti-bot
+                AntiB = r'''role="button"><img alt="Anti-bot
         /verify <result>"'''
                 if addStr and AntiB in Html:
                     Sound('ding.mp3')
