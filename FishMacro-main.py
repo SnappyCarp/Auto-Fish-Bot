@@ -31,7 +31,7 @@ class Fisher():
     def __init__(self):
         super().__init__()
     
-    def isCaptcha(self, mId: str):
+    def isCaptcha(self, mId: int):
             addStr = f'chat-messages-{ChannelId}-{mId}'
             items = driver.find_elements_by_tag_name("li")
             for item in items:
@@ -58,9 +58,8 @@ class Fisher():
             ActionChains(driver).send_keys(Keys.ENTER).perform()
             time.sleep(1.2)
             LatestXPATH="""//ol[@data-list-id="chat-messages"]/li[last()]//div[contains(@class,'messageContent')]"""
-            LatestMsg=driver.find_element_by_xpath(LatestXPATH).get_attribute('id').replace('message-content-','')
+            LatestMsg=int(driver.find_element_by_xpath(LatestXPATH).get_attribute('id').replace('message-content-',''))
             self.isCaptcha(LatestMsg)
-
 
 try:
     #Logging In
