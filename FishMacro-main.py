@@ -31,7 +31,6 @@ class Fisher():
     def __init__(self):
         super().__init__()
     
-
     def isCaptcha(self, mId: str):
             addStr = f'chat-messages-{ChannelId}-{mId}'
             items = driver.find_elements_by_tag_name("li")
