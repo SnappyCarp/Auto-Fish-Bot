@@ -37,8 +37,8 @@ class Fisher():
             items = driver.find_elements_by_tag_name("li")
             for item in items:
                 Html = str(item.get_attribute("innerHTML"))
-                AntiB = r'''role="button"><img alt="Anti-bot
-        /verify <result>"'''
+                AntiB = str(r'''role="button"><img alt="Anti-bot
+        /verify <result>"''')
                 if addStr and AntiB in Html:
                     Sound('ding.mp3')
                     raise SystemExit
