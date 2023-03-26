@@ -63,7 +63,8 @@ class Fisher():
 
 try:
     #Logging In
-    with open('creds.json','r') as f:data=json.load(f)
+    with open('creds.json','r') as f:
+        data=json.load(f)
     global driver
     driver = webdriver.Chrome("Path To Microsoft Edge Driver.exe", options=options)
     driver.get(f'https://discord.com/login?redirect_to=%2Fchannels%2F{ServerId}%2F{ChannelId}')
